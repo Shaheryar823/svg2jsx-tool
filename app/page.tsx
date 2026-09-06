@@ -43,11 +43,12 @@ export default function SvgToJsxConverter() {
       // 1. Convert attributes from kebab-case to camelCase
       let jsxBody = cleaned.replace(
         /([a-zA-Z0-9:-]+)=(["'])(.*?)\2/g,
-        (match, attrName, quote, value) => {
+        (match: string, attrName: string, quote: string, value: string) => {
           if (SPECIAL_ATTRIBUTES[attrName]) {
             return `${SPECIAL_ATTRIBUTES[attrName]}=${quote}${value}${quote}`;
           }
-          const camelCased = attrName.replace(/[-:]([a-z0-9])/gi, (_, char) =>
+          // Explicitly typed parameters (_: string, char: string) to pass TS check
+          const camelCased = attrName.replace(/[-:]([a-z0-9])/gi, (_: string, char: string) =>
             char.toUpperCase()
           );
           return `${camelCased}=${quote}${value}${quote}`;
