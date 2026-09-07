@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Copy, Check, Trash2, Code2, Sparkles, AlertCircle } from 'lucide-react';
+import AdBanner from '@/components/AdBanner'; // Import your reusable AdBanner component
 
 const SPECIAL_ATTRIBUTES: Record<string, string> = {
   'class': 'className',
@@ -77,6 +78,7 @@ export default function SvgToJsxConverter() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+      {/* Header */}
       <header className="border-b border-slate-800 bg-slate-900/50 backdrop-blur px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Code2 className="w-6 h-6 text-indigo-400" />
@@ -87,12 +89,12 @@ export default function SvgToJsxConverter() {
         </div>
       </header>
 
-      <div className="w-full max-w-5xl mx-auto mt-4 px-4">
-        <div className="w-full h-20 bg-slate-900/60 border border-dashed border-slate-800 rounded-lg flex items-center justify-center text-xs text-slate-500 tracking-wider">
-          ADVERTISEMENT (728x90)
-        </div>
+      {/* Top Ad Unit */}
+      <div className="w-full max-w-5xl mx-auto mt-4 px-4 min-h-[90px]">
+        <AdBanner dataAdSlot="1234567890" /> {/* Replace with your Top Ad Slot ID */}
       </div>
 
+      {/* Main Workspace */}
       <main className="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 flex flex-col gap-4">
         <div className="flex flex-wrap items-center justify-between gap-4 bg-slate-900 p-4 rounded-xl border border-slate-800">
           <div className="flex items-center gap-4">
@@ -142,6 +144,7 @@ export default function SvgToJsxConverter() {
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1 min-h-[420px]">
+          {/* Input Editor */}
           <div className="flex flex-col bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
             <div className="bg-slate-950/50 px-4 py-2.5 border-b border-slate-800 text-xs font-medium text-slate-400">
               Input SVG
@@ -154,6 +157,7 @@ export default function SvgToJsxConverter() {
             />
           </div>
 
+          {/* Output Editor */}
           <div className="flex flex-col bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
             <div className="bg-slate-950/50 px-4 py-2.5 border-b border-slate-800 text-xs font-medium text-slate-400 flex items-center justify-between">
               <span>JSX Output</span>
@@ -169,11 +173,10 @@ export default function SvgToJsxConverter() {
         </div>
       </main>
 
+      {/* Footer Ad Unit */}
       <footer className="mt-auto py-4 border-t border-slate-900 bg-slate-950/80">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="w-full h-16 bg-slate-900/60 border border-dashed border-slate-800 rounded-lg flex items-center justify-center text-xs text-slate-500 tracking-wider">
-            STICKY BOTTOM ADVERTISEMENT (728x90)
-          </div>
+        <div className="max-w-5xl mx-auto px-4 min-h-[90px]">
+          <AdBanner dataAdSlot="0987654321" /> {/* Replace with your Footer Ad Slot ID */}
         </div>
       </footer>
     </div>
