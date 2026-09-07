@@ -175,8 +175,17 @@ export default function SvgToJsxConverter() {
 
       {/* Footer Ad Unit */}
       <footer className="mt-auto py-4 border-t border-slate-900 bg-slate-950/80">
-        <div className="max-w-5xl mx-auto px-4 min-h-[90px]">
-          <AdBanner dataAdSlot="0987654321" /> {/* Replace with your Footer Ad Slot ID */}
+        <div className="max-w-5xl mx-auto px-4 flex flex-col items-center gap-2">
+          <div className="w-full min-h-[90px]">
+            <AdBanner dataAdSlot="0987654321" />
+          </div>
+          <div className="flex items-center gap-4 text-xs text-slate-500">
+            <span>&copy; {new Date().getFullYear()} SVG2JSX</span>
+            <span>&bull;</span>
+            <a href="/privacy" className="hover:text-slate-300 transition">
+              Privacy Policy
+            </a>
+          </div>
         </div>
       </footer>
     </div>
